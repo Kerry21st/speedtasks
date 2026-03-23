@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-direction: column;
+        height:90vh;
+        gap: 20px;
+        color: black;
+    }
+    p{
+        margin: 0;
+    }
+    h1{
+        font-size: 35px;
+        font-weight: 700;
+
+    }
+    form{
+        width: max-content;
+        height: max-content;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 25px;
+        transition: .5s;
+        border: 1px solid #000;
+    }
+    textarea{
+        outline: none;
+        min-width: 300px ;
+        min-height: 200px;
+        border-radius:10px ;
+    }
+    button{
+        background-color: #fff;
+        border: 1px solid #000;
+        width: 100px ;
+        height: 30px;
+        border-radius: 5px;
+        font-size: 20px;
+        font-family: Jura ;
+        transition: .5s;
+        font-weight: bold;
+    }
+    select{
+        width: 200px;
+        text-align: center;
+        background-color: transparent;
+        color: #fff;
+        font-family: Jura;
+        font-size: 18px;
+    }
+    select option{
+        color: #000;
+    }
+    label{
+        color: #000;
+        font-family: Jura;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        height: 15px;
+    }
+    .checkbox{
+    height: 15px;
+    margin: 0;
+    }
+    .range{
+        accent-color: #000;
+    }
+    progress{
+        accent-color: #000;
+    }
+    .date{
+        font-family: Jura;
+        text-align: center;
+        font-size: 18px;
+    }
+    </style>
+</head>
+<body>
+    <form action="">
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <button>Кнопка</button>
+        <select>
+            <option value="0">Выпадающий список</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <input type="checkbox">
+        <input type="radio" name="" id="">
+        <label for="qwe"><p> Я метка с чекбоксом</p>
+            <input class="checkbox" name="qwe" type="checkbox">
+        </label>
+        <input class="range" type="range" max="100"  >
+        <label for="qwer"><p> Я метка с радиокнопкой</p>
+            <input class="checkbox" name="qweк" type="radio">
+        </label>
+        <input class="date" type="date">
+        <progress max= "100" value="50"></progress>
+    </form>
+</body>
+</html>

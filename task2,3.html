@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color Generator</title>
+    <style>
+        .scene {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateX(0) rotateY(0);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .cube {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+        }
+
+        .face {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: rgba(180, 180, 180, 0.9);
+            border: 1px solid #ccc;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .face div {
+            width: calc(100%/3);
+            height: calc(100%/3);
+            border: 1px solid #eee;
+            box-sizing: border-box;
+        }
+        .front  { transform: rotateY( 0deg) translateZ(50px); }
+        .back   { transform: rotateY(180deg) translateZ(50px); }
+        .right  { transform: rotateY(90deg) translateZ(50px); }
+        .left   { transform: rotateY(-90deg) translateZ(50px); }
+        .top    { transform: rotateX(90deg) translateZ(50px); }
+        .bottom { transform: rotateX(-90deg) translateZ(50px); }
+        .pidor {
+            color: #555555;
+        }
+        /* .front > div {
+            background-color: rgb(255, 0, 0, 0.8);
+        }
+        .back > div {
+            background-color: rgb(0, 128, 0, 0.8);
+        }
+        .right > div {
+            background-color: rgb(0, 0, 255, 0.8);
+        }
+        .left > div {
+            background-color: rgb(255, 255, 0, 0.8);
+        }
+        .top > div {
+            background-color: rgb(255, 255, 255, 0.8);
+        }
+        .bottom > div {
+            background-color: rgb(255, 165, 0, 0.8);
+        } */
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 100vh;
+            background-color: #555555;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .color-display {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .sliders {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="pidor">Дима лох</div>
+    <div>
+        <div class="scene">
+            <div class="cube">
+                <div class="face front">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+                <div class="face back">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+                <div class="face right">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+                <div class="face left">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+                <div class="face top">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+                <div class="face bottom">
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                    <div></div><div></div><div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>RGB Color Generator</h1>
+        <div class="color-display" id="colorDisplay"></div>
+        <div class="sliders">
+            <label for="red">Red:</label>
+            <input type="range" id="red" min="0" max="255" value="128">
+            <input type="number" id="redInput" min="0" max="255" value="128">
+            <br>
+            <label for="green">Green:</label>
+            <input type="range" id="green" min="0" max="255" value="128">
+            <input type="number" id="greenInput" min="0" max="255" value="128">
+            <br>
+            <label for="blue">Blue:</label>
+            <input type="range" id="blue" min="0" max="255" value="128">
+            <input type="number" id="blueInput" min="0" max="255" value="128">
+        </div>
+    </div>
+    <script>
+        const redSlider = document.getElementById('red');
+        const greenSlider = document.getElementById('green');
+        const blueSlider = document.getElementById('blue');
+        const colorDisplay = document.getElementById('colorDisplay');
+        var x = document.getElementsByClassName("face");
+
+        const redInput = document.getElementById('redInput');
+        const greenInput = document.getElementById('greenInput');
+        const blueInput = document.getElementById('blueInput');
+
+        function updateColor() {
+            const red = redSlider.value;
+            const green = greenSlider.value;
+            const blue = blueSlider.value;
+
+            colorDisplay.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            for (var i = 0; i < x.length; i++) {
+                x[i].style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+            }
+
+            // Обновление значений в input
+            redInput.value = red;
+            greenInput.value = green;
+            blueInput.value = blue;
+        }
+
+        // Добавление обработчиков событий для ползунков
+        redSlider.addEventListener('input', updateColor);
+        greenSlider.addEventListener('input', updateColor);
+        blueSlider.addEventListener('input', updateColor);
+
+        // Добавление обработчиков событий для числовых полей
+        redInput.addEventListener('input', () => {
+            redSlider.value = redInput.value;
+            updateColor();
+        });
+        greenInput.addEventListener('input', () => {
+            greenSlider.value = greenInput.value;
+            updateColor();
+        });
+        blueInput.addEventListener('input', () => {
+            blueSlider.value = blueInput.value;
+            updateColor();
+        });
+
+        // Инициализация цвета при загрузке 
+        updateColor();
+    </script>
+</body>
+</html>

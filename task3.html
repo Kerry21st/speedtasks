@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .color-display {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .sliders {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>RGB Color Generator</h1>
+        <div class="color-display" id="colorDisplay"></div>
+        <div class="sliders">
+            <label for="red">Red:</label>
+            <input type="range" id="red" min="0" max="255" value="128">
+            <input type="number" id="redInput" min="0" max="255" value="128">
+            <br>
+            <label for="green">Green:</label>
+            <input type="range" id="green" min="0" max="255" value="128">
+            <input type="number" id="greenInput" min="0" max="255" value="128">
+            <br>
+            <label for="blue">Blue:</label>
+            <input type="range" id="blue" min="0" max="255" value="128">
+            <input type="number" id="blueInput" min="0" max="255" value="128">
+        </div>
+    </div>
+    <script>
+        const redSlider = document.getElementById('red');
+        const greenSlider = document.getElementById('green');
+        const blueSlider = document.getElementById('blue');
+        const colorDisplay = document.getElementById('colorDisplay');
+
+        const redInput = document.getElementById('redInput');
+        const greenInput = document.getElementById('greenInput');
+        const blueInput = document.getElementById('blueInput');
+
+        function updateColor() {
+            const red = redSlider.value;
+            const green = greenSlider.value;
+            const blue = blueSlider.value;
+
+            colorDisplay.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+
+            // Обновление значений в input
+            redInput.value = red;
+            greenInput.value = green;
+            blueInput.value = blue;
+        }
+
+        // Добавление обработчиков событий для ползунков
+        redSlider.addEventListener('input', updateColor);
+        greenSlider.addEventListener('input', updateColor);
+        blueSlider.addEventListener('input', updateColor);
+
+        // Добавление обработчиков событий для числовых полей
+        redInput.addEventListener('input', () => {
+            redSlider.value = redInput.value;
+            updateColor();
+        });
+        greenInput.addEventListener('input', () => {
+            greenSlider.value = greenInput.value;
+            updateColor();
+        });
+        blueInput.addEventListener('input', () => {
+            blueSlider.value = blueInput.value;
+            updateColor();
+        });
+
+        // Инициализация цвета при загрузке
+        updateColor();
+    </script>
+</body>
+</html>
