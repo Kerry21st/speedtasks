@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>draft</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+            text-decoration: none;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: url(https://i.pinimg.com/originals/19/ff/ab/19ffab7fb5a982b3cc13ed35ae61d8a1.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            max-width: 500px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgb(202, 202, 202);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-family: sans-serif;
+            color: #fff;
+        }
+
+        .main-input {
+            width: 100%;
+            height: 50px;
+            border: none;
+            background: transparent;
+            border-bottom: 2px solid #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #fff;
+            padding-left: 10px;
+        }
+
+        .remember-forgot-block {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .remember-block {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            color: #fff;
+        }
+
+        .remember-block input {
+            accent-color: white;
+        }
+
+        .forgot-link {
+            color: #fff;
+        }
+
+        .login {
+            width: 100%;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .havent-account {
+            color: #fff;
+            display: flex;
+            gap: 10px;
+        }
+
+        .register {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="main">
+        <form>
+            <h1>Login</h1>
+            <input type="email" class="main-input" placeholder="enter your email">
+            <input type="password" class="main-input" placeholder="enter your password">
+            <div class="remember-forgot-block">
+                <div class="remember-block">
+                    <input type="checkbox" id="check">
+                    Remember me
+                </div>
+                <a href="#" class="forgot-link">Forgot password?</a>
+            </div>
+            <button type="submit" class="login">Log in</button>
+            <div class="havent-account">
+                <span class="dont-have">Don't have account?</span>
+                <a href="#" class="register">Register</a>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
